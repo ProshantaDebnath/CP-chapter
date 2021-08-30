@@ -2,9 +2,10 @@
 #include <iostream>
 using namespace std;
 
-
-int secondLargest(int arr[], int n) {
-	int largest = 0, secondLargest = -1;
+int main() {
+	int arr[] = {100, 12, 200, 4,5};
+	int n = sizeof(arr)/sizeof(int);
+    int largest = 0, secondLargest = -1;
 
 	// finding the largest element in the array
 	for (int i = 1; i < n; i++) {
@@ -24,16 +25,10 @@ int secondLargest(int arr[], int n) {
 				secondLargest = i;
 		}
 	}
-	return secondLargest;
+
+	if (secondLargest == -1)
+        cout << "Second largest didn't exit\n";
+        else
+        cout << "Second largest : " << arr[secondLargest];
 }
 
-
-int main() {
-	int arr[] = {10, 12, 20, 4};
-	int n = sizeof(arr)/sizeof(arr[0]);
-	int second_Largest = secondLargest(arr, n);
-	if (second_Largest == -1)
-		cout << "Second largest didn't exit\n";
-	else
-		cout << "Second largest : " << arr[second_Largest];
-}
