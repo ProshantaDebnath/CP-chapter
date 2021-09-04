@@ -78,7 +78,100 @@ public:
 //push(), pop(), isEmpty() and peek() all take O(1) time. 
 
 
-// method 2
+
+// method 2 
+//increase array size dynamically
+
+#include<iostream>
+#include<climits>
+
+using namespace std;
+
+class StackUsingArray{
+
+private:
+    int *data;
+    int nextIndex;
+    int capacity;
+public:
+    StackUsingArray(){
+        data = new int[4];
+        nextIndex = 0;
+        capacity = 4;
+    }
+
+    int size(){
+        return nextIndex;
+    }
+
+    bool isEmpty(){
+    if(nextIndex == -1)
+        return true;
+    else
+        return false;
+    }
+
+    void push(int element){
+
+        if(nextIndex == capacity)
+        {
+           int *nedata = new int[ 2 * capacity];
+           for(int i = 0; i<capacity; i++){
+            nedata[i]= data[i];
+           }
+        }
+        capacity = capacity * 2;
+        data[nextIndex] = element;
+        nextIndex ++;
+    }
+
+    int pop(){
+
+        if( isEmpty() ) {
+            cout << "Stack is empty"<<endl;
+        }
+        nextIndex -- ;
+        return data[nextIndex];
+    }
+
+    int top(){
+
+        if( isEmpty() ) {
+            cout << "Stack is empty"<<endl;
+        }
+        return data[nextIndex - 1];
+    }
+
+
+
+};
+
+    int main(){
+
+        StackUsingArray s;
+        s.push(10);
+        s.push(20);
+        s.push(30);
+
+        cout << "pop element is "<<s.pop() << endl;
+        cout << "top element is "<<s.top() << endl;
+
+        s.push(40);
+        cout << "top element is "<<s.top() << endl;
+        cout << s.isEmpty()<<endl;
+        s.push(10);
+        s.push(20);
+        s.push(100);
+        cout << "Stack size is " << s.size()<<endl;
+        cout << "top element is "<<s.top() << endl;
+
+    }
+
+
+
+
+
+// method 3
 
 #include <iostream>
 using namespace std;
@@ -165,4 +258,6 @@ int main()
  }
   return 0;
 }
+
+
 
